@@ -22,22 +22,36 @@ except Exception as e:
     sys.exit()
 
 def writeFile(utils):
-    write2file = utils.writeFile()
+    try:
+        acontent=str(iContent)
+        newLine=True
+        write2file = utils.writeFile()
+    except Exception as e:
+        print(f"Error when writing the file. Error: {e}")
 
 def wait5sec(utils):
-    actual_ts=utils.Date2Timestamp()
-    utils = Utils(timeStamp=actual_ts)
-    timeDiff = utils.TimestampTimeDiff()
-    while timeDiff < 5:
-        wait5sec(utils)
-        time.sleep(0.1)
+    try:
+        actual_ts=utils.Date2Timestamp()
+        utils.timeStamp = actual_ts
+        timeDiff = utils.TimestampTimeDiff()
+        # while timeDiff < 5:
+        #     time.sleep(0.1)
+        #     wait5sec(utils)
+    except Exception as e:
+        print(f"Error when waiting to write. Error: {e}")
 
 if __name__ == "__main__":
-    iFile = "../../src/test.txt"
-    iContent = 0
-    while iContent < 100:
-        actual_date=datetime.now()
-        utils = Utils(afile=iFile,acontent=str(iContent),fileMode="a",newLine=True,dateTime=actual_date)
-        writeFile(utils)
-        wait5sec(utils)
-        iContent += 1
+    try:
+        iFile = "../../src/test.txt"
+        iContent = 0
+        while iContent < 100:
+            print(iContent)
+            actual_date=datetime.now()
+            utils = Utils(afile=iFile,fileMode="a",dateTime=actual_date)
+            writeFile(utils)
+            wait5sec(utils)
+            iContent += 1
+    except Exception as e:
+        print(f"Error: {e}")
+    except KeyboardInterrupt:
+        sys.exit("\n")
