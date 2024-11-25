@@ -51,4 +51,4 @@ TimeoutStopSec=30
 [Install]
 # The target to link the service to for automatic start at boot
 # Example: 'multi-user.target' is used for non-graphical multi-user systems
-WantedBy=multi-user.target
+# WantedBy=multi-user.target
