@@ -24,8 +24,9 @@ except Exception as e:
 def writeFile(utils):
     try:
         acontent=str(iContent)
-        newLine=True
-        write2file = utils.writeFile()
+        utils.acontent = acontent
+        utils.newLine=True
+        utils.writeFile()
     except Exception as e:
         print(f"Error when writing the file. Error: {e}")
 
@@ -34,6 +35,7 @@ def wait5sec(utils):
         actual_ts=utils.Date2Timestamp()
         utils.timeStamp = actual_ts
         timeDiff = utils.TimestampTimeDiff()
+        time.sleep(5)
         # while timeDiff < 5:
         #     time.sleep(0.1)
         #     wait5sec(utils)
@@ -42,7 +44,8 @@ def wait5sec(utils):
 
 if __name__ == "__main__":
     try:
-        iFile = "../../src/test.txt"
+        iFile = "/opt/tmp/test.txt"
+        #iFile=os.path.dirname(iFile)
         iContent = 0
         while iContent < 100:
             print(iContent)
