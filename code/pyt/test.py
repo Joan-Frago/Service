@@ -36,9 +36,6 @@ def wait5sec(utils):
         utils.timeStamp = actual_ts
         timeDiff = utils.TimestampTimeDiff()
         time.sleep(5)
-        # while timeDiff < 5:
-        #     time.sleep(0.1)
-        #     wait5sec(utils)
     except Exception as e:
         print(f"Error when waiting to write. Error: {e}")
 
